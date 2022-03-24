@@ -1,0 +1,10 @@
+name: 'Discord Status'
+description: 'Update your discord status in a file using this action.'
+inputs:
+  file:  
+    description: 'File to write to'
+    required: true
+    default: 'README.md'
+runs:
+  using: 'node16'
+  main: 'update.js'
