@@ -33,5 +33,11 @@ jobs:
         with:
           file: README.md
           id: "893762371770802227"
-
+      - name: Commit and push if there are changes
+        run: |-
+          git diff
+          git config --global user.email "hi@devcomp.tk"
+          git config --global user.name "DocsBot"
+          git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
+          git push               
 ```
