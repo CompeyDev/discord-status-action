@@ -29,6 +29,7 @@ try {
     const status = json.discord_status
     console.log(status)
     const file = core.getInput('file');
+    console.log(file)
     exec('export FILE=', file, (err, stdout, stderr) => {
       if (err) {
         console.error(`exec error: ${err}`);
