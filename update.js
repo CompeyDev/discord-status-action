@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const axios = require('axios');
 const { exec } = require('child_process');
-const id = core.getInput("id")
+const id = "893762371770802227"
 
 try {
   axios.get(`https://api.lanyard.rest/v1/users/${id}`)
@@ -14,6 +14,7 @@ try {
         exec(`sed -i "s/⚪/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -23,6 +24,7 @@ try {
           exec(`sed -i "s/🔴/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -31,6 +33,7 @@ try {
           exec(`sed -i "s/🟡/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -42,6 +45,7 @@ try {
         exec(`sed -i "s/⚪/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -51,6 +55,7 @@ try {
           exec(`sed -i "s/🟢/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -59,6 +64,7 @@ try {
           exec(`sed -i "s/🟡/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -70,6 +76,7 @@ try {
         exec(`sed -i "s/⚪/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -79,6 +86,7 @@ try {
           exec(`sed -i "s/🟢/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
@@ -87,6 +95,7 @@ try {
           exec(`sed -i "s/🔴/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
               return;
             }
           
