@@ -5,6 +5,9 @@ inputs:
     description: 'File to write to'
     required: true
     default: 'README.md'
+  id:  
+    description: 'Discord ID of the user whose status you want to fetch.'
+    required: true
 runs:
   using: 'node16'
   main: 'update.js'
