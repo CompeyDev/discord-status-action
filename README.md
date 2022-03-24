@@ -48,3 +48,6 @@ jobs:
 ---
 
 ### Discord Status: 🟢
+---
+
+This repository is licensed under a [MIT](https://compeydev.mit-license.org) License.
