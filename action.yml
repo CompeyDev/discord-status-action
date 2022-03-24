@@ -1,5 +1,7 @@
 name: 'Discord Status'
 description: 'Update your discord status in a file using this action.'
+icon: 'activity'
+color: 'purple'
 inputs:
   file:  
     description: 'File to write to'
