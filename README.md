@@ -3,8 +3,8 @@
 This action fetches the status of a given user and updates that on a file. 
 
 🟢 - Online
-🟡 - Idle
-🔴 - Do not disturb
+🟢 - Idle
+🟢 - Do not disturb
 
 ## Inputs
 
@@ -44,4 +44,4 @@ jobs:
 
 ---
 
-### Discord Status: ⚪
+### Discord Status: 🟢
