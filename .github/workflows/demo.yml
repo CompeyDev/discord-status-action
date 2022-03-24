@@ -1,5 +1,7 @@
-on: [push]
-
+on:
+  schedule: [{cron: "*/7 * * * *"}]
+  workflow_dispatch:
+  push: {branches: ["master", "main"]}
 jobs:
   status:
     runs-on: ubuntu-latest
