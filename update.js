@@ -1,36 +1,17 @@
-/** const axios = require('axios');
-
-// Make a request for a user with a given ID
-axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response.discord_status);
-  })
-
-  **/
-
-
-/**
-const axios = require('axios');
-axios.get('https://api.lanyard.rest/v1/users/893762371770802227')
-  .then(res => {
-    console.log(res.data);
-  });  
-  **/
 const core = require('@actions/core');
-const github = require('@actions/github');
 const axios = require('axios');
 const { exec } = require('child_process');
-const file = core.getInput('file');
+const id = core.getInput("id")
 
 try {
-  axios.get('https://api.lanyard.rest/v1/users/893762371770802227')
+  axios.get('https://api.lanyard.rest/v1/users/', id)
   .then((response) => {
     const json = response.data.data
     const status = json.discord_status
-    console.log(status)
+    console.log("User's status", status)
+    const file = core.getInput("file")
     if (status == 'online') {
-        exec('./replace.sh ${file} ⚪ 🟢', (err, stdout, stderr) => {
+        exec(`sed -i "s/⚪/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -39,7 +20,7 @@ try {
             console.log(`${stdout}`);
           });
 
-          exec('./replace.sh ${file} 🔴 🟢', (err, stdout, stderr) => {
+          exec(`sed -i "s/🔴/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -47,7 +28,7 @@ try {
           
             console.log(`${stdout}`);
           });
-          exec('./replace.sh ${file} 🟡 🟢', (err, stdout, stderr) => {
+          exec(`sed -i "s/🟡/🟢/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -58,7 +39,7 @@ try {
     }
 
     if (status == 'dnd') {
-        exec('./replace.sh ${file} ⚪ 🔴', (err, stdout, stderr) => {
+        exec(`sed -i "s/⚪/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -67,7 +48,7 @@ try {
             console.log(`${stdout}`);
           });
 
-          exec('./replace.sh ${file} 🟢 🔴', (err, stdout, stderr) => {
+          exec(`sed -i "s/🟢/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -75,7 +56,7 @@ try {
           
             console.log(`${stdout}`);
           });
-          exec('./replace.sh ${file} 🟡 🔴', (err, stdout, stderr) => {
+          exec(`sed -i "s/🟡/🔴/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -86,7 +67,7 @@ try {
     }  
 
     if (status == 'idle') {
-        exec('./replace.sh ${file} ⚪ 🟡', (err, stdout, stderr) => {
+        exec(`sed -i "s/⚪/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -95,7 +76,7 @@ try {
             console.log(`${stdout}`);
           });
 
-          exec('./replace.sh ${file} 🟢 🟡', (err, stdout, stderr) => {
+          exec(`sed -i "s/🟢/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
@@ -103,7 +84,7 @@ try {
           
             console.log(`${stdout}`);
           });
-          exec('./replace.sh ${file} 🔴 🟡', (err, stdout, stderr) => {
+          exec(`sed -i "s/🔴/🟡/g" ${file}`, (err, stdout, stderr) => {
             if (err) {
               console.error(`exec error: ${err}`);
               return;
