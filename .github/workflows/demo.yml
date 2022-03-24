@@ -1,3 +1,5 @@
+name: Update demo status on README
+
 on:
   schedule: [{cron: "*/7 * * * *"}]
   workflow_dispatch:
