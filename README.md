@@ -2,9 +2,9 @@
 
 This action fetches the status of a given user and updates that on a file. 
 
-🟢 - Online
-🟢 - Idle
-🟢 - Do not disturb
+Green - Online
+Yellow - Idle
+Red - Do not disturb
 
 ## Inputs
 
@@ -19,7 +19,10 @@ This action fetches the status of a given user and updates that on a file.
 ## Example usage
 
 ```yml
-on: [push]
+on:
+  schedule: [{cron: "*/7 * * * *"}]
+  workflow_dispatch:
+  push: {branches: ["master", "main"]}
 
 jobs:
   status:
@@ -37,7 +40,7 @@ jobs:
         run: |-
           git diff
           git config --global user.email "hi@devcomp.tk"
-          git config --global user.name "DocsBot"
+          git config --global user.name "StatsBot"
           git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
           git push               
 ```
