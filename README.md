@@ -41,3 +41,7 @@ jobs:
           git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
           git push               
 ```
+
+---
+
+### Discord Status: ⚪
