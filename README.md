@@ -2,9 +2,11 @@
 
 This action fetches the status of a given user and updates that on a file. 
 
-Green - Online
-Yellow - Idle
-Red - Do not disturb
+<img src="https://cdn.devcomp.tk/twemoji-13.1.0/assets/svg/1f7e2.svg" width="17"></img> - **Online**
+<br>
+<img src="https://cdn.devcomp.tk/twemoji-13.1.0/assets/svg/1f7e1.svg" width="17"></img> - **Idle**
+<br>
+<img src="https://cdn.devcomp.tk/twemoji-13.1.0/assets/svg/1f534.svg" width="17"></img> - **Do not disturb**
 
 ## Inputs
 
