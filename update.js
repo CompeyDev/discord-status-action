@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const id = core.getInput("id")
 
 try {
-  axios.get('https://api.lanyard.rest/v1/users/', id)
+  axios.get(`https://api.lanyard.rest/v1/users/${id}`)
   .then((response) => {
     const json = response.data.data
     const status = json.discord_status
