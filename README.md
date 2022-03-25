@@ -34,7 +34,7 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v3
       - name: Update Status
-        uses: CompeyDev/discord-status-action@0.2.1
+        uses: CompeyDev/discord-status-action@0.2.2
         with:
           file: README.md
           id: "893762371770802227"
