@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const axios = require('axios');
 const { exec } = require('child_process');
-const id = "893762371770802227"
+const id = core.getInput("id")
 
 try {
   axios.get(`https://api.lanyard.rest/v1/users/${id}`)
