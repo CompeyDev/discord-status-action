@@ -38,7 +38,16 @@ try {
             }
           
             console.log(`${stdout}`);
-          });                                            
+          });     
+          exec(`sed -i "s/🟣/🟢/g" ${file}`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
+              return;
+            }
+          
+            console.log(`${stdout}`);
+          });                                                        
     }
 
     if (status == 'dnd') {
@@ -69,7 +78,16 @@ try {
             }
           
             console.log(`${stdout}`);
-          });                                            
+          });           
+          exec(`sed -i "s/🟣/🔴/g" ${file}`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
+              return;
+            }
+          
+            console.log(`${stdout}`);
+          });                                                  
     }  
 
     if (status == 'idle') {
@@ -100,8 +118,97 @@ try {
             }
           
             console.log(`${stdout}`);
-          });                                            
-    }       
+          });    
+          exec(`sed -i "s/🟣/🟡/g" ${file}`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`exec error: ${err}`);
+              throw new Error("Command failed.");
+              return;
+            }
+          
+            console.log(`${stdout}`);
+          });                                                         
+    }
+    
+    if (status == 'offline') {
+      exec(`sed -i "s/🟢/⚪/g" ${file}`, (err, stdout, stderr) => {
+          if (err) {
+            console.error(`exec error: ${err}`);
+            throw new Error("Command failed.");
+            return;
+          }
+        
+          console.log(`${stdout}`);
+        });
+
+        exec(`sed -i "s/🔴/⚪/g" ${file}`, (err, stdout, stderr) => {
+          if (err) {
+            console.error(`exec error: ${err}`);
+            throw new Error("Command failed.");
+            return;
+          }
+        
+          console.log(`${stdout}`);
+        });
+        exec(`sed -i "s/🟡/⚪/g" ${file}`, (err, stdout, stderr) => {
+          if (err) {
+            console.error(`exec error: ${err}`);
+            throw new Error("Command failed.");
+            return;
+          }
+        
+          console.log(`${stdout}`);
+        });    
+        exec(`sed -i "s/🟣/⚪/g" ${file}`, (err, stdout, stderr) => {
+          if (err) {
+            console.error(`exec error: ${err}`);
+            throw new Error("Command failed.");
+            return;
+          }
+        
+          console.log(`${stdout}`);
+        });                                                    
+  }        
+  
+  if (status == 'streaming') {
+    exec(`sed -i "s/🟢/🟣/g" ${file}`, (err, stdout, stderr) => {
+        if (err) {
+          console.error(`exec error: ${err}`);
+          throw new Error("Command failed.");
+          return;
+        }
+      
+        console.log(`${stdout}`);
+      });
+
+      exec(`sed -i "s/🔴/🟣/g" ${file}`, (err, stdout, stderr) => {
+        if (err) {
+          console.error(`exec error: ${err}`);
+          throw new Error("Command failed.");
+          return;
+        }
+      
+        console.log(`${stdout}`);
+      });
+      exec(`sed -i "s/🟡/🟣/g" ${file}`, (err, stdout, stderr) => {
+        if (err) {
+          console.error(`exec error: ${err}`);
+          throw new Error("Command failed.");
+          return;
+        }
+      
+        console.log(`${stdout}`);
+      });    
+      exec(`sed -i "s/⚪/🟣/g" ${file}`, (err, stdout, stderr) => {
+        if (err) {
+          console.error(`exec error: ${err}`);
+          throw new Error("Command failed.");
+          return;
+        }
+      
+        console.log(`${stdout}`);
+      });                                             
+}           
   });
 }
 
