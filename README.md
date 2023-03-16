@@ -45,11 +45,11 @@ jobs:
         uses: CompeyDev/discord-status-action@0.2.4
         with:
           file: README.md
-          id: "893762371770802227"
+          id: "893762371770802227" # Replace with your Discord User ID.
       - name: Commit and push if there are changes
         run: |-
           git diff
-          git config --global user.email "hi@devcomp.tk"
+          git config --global user.email "hi@devcomp.xyz" # Replace with an email associated to your GitHub Account.
           git config --global user.name "StatsBot"
           git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
           git push               
