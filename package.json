@@ -1,4 +1,12 @@
 {
+  "name": "discord-status-action",
+  "version": "2.0.0",
+  "description": "GitHub action to update your discord status in a file using the Lanyard API.",
+  "main": "update.js",
+  "repository": "https://github.com/CompeyDev/discord-status-action",
+  "author": "Compey <hi@devcomp.xyz>",
+  "license": "MIT",
+  "private": true,
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/github": "^5.0.0",
