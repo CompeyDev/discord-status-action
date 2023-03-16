@@ -19,7 +19,7 @@ jobs:
       - name: Commit and push if there are changes
         run: |-
           git diff
-          git config --global user.email "hi@devcomp.tk"
+          git config --global user.email "hi@devcomp.xyz"
           git config --global user.name "StatsBot"
           git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
           git push               
