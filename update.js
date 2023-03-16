@@ -8,6 +8,11 @@ const { readFileSync, writeFileSync } = require('fs');
 const id = isProd ? core.getInput("id") : "893762371770802227"
 const file = isProd ? core.getInput("file") : "README.md"
 
+function handleException(err) {
+  console.error(err.message)
+  process.exit(1)
+}
+
 const deriveReplacement = (status) => {
   const symbols = {
     offline: "⚪",
@@ -23,13 +28,26 @@ const deriveReplacement = (status) => {
   try {
     var fileBuf = readFileSync(file)
     console.log("[deriveReplacement] :: Successfully read target file.")
-  } catch (_) { throw new Error("[deriveReplacement] :: Failed to read target file.") }
+  } catch (err) {
+    if (core.isDebug()) {
+      console.error("[deriveReplacement] :: Failed to read target file.\nCaptured Trace:\n", err)
+    } else {
+      console.error("[deriveReplacement] :: Failed to read target file.")
+    }
+  }
+
   const replacedContents = fileBuf.toString().replace(matcher, statusSymbol)
 
   try {
     writeFileSync(file, replacedContents)
     console.log("[deriveReplacement] :: Successfully wrote updated contents to target file.")
-  } catch (_) { throw new Error("[deriveReplacement] :: Failed to write to target file.") }
+  } catch (err) { 
+    if (core.isDebug()) {
+      console.error("[deriveReplacement] :: Failed to write to target file.\nCaptured Trace:\n", err)
+    } else {
+      console.error("[deriveReplacement] :: Failed to write to target file.")
+    }
+  }
 }
 
 axios.get(`https://api.lanyard.rest/v1/users/${id}`)
@@ -40,8 +58,10 @@ axios.get(`https://api.lanyard.rest/v1/users/${id}`)
 
     if (!status) throw new Error("[self] :: Invalid status type. Refusing to continue.")
 
-    deriveReplacement(status)
+    try { deriveReplacement(status) } catch(err) {
+      core.setFailed(err.message)
+    }
   })
   .catch((err) => {
-    isProd ? core.setFailed(err.message) : console.error(err.message)
+    isProd ? core.setFailed(err.message) : handleException(err)
   })
