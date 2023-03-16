@@ -31,6 +31,7 @@ const deriveReplacement = (status) => {
     console.log("[deriveReplacement] :: Successfully wrote updated contents to target file.")
   } catch (_) { throw new Error("[deriveReplacement] :: Failed to write to target file.") }
 }
+
 axios.get(`https://api.lanyard.rest/v1/users/${id}`)
   .then((response) => {
     const fetchedRaw = response.data.data
