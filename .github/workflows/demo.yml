@@ -1,9 +1,9 @@
 name: Update demo status on README
 
 on:
-  schedule: [{cron: "*/7 * * * *"}]
   workflow_dispatch:
-  push: {branches: ["master", "main"]}
+  push:
+
 jobs:
   status:
     runs-on: ubuntu-latest
@@ -12,14 +12,14 @@ jobs:
       - name: Checkout files
         uses: actions/checkout@v3
       - name: Update Status
-        uses: CompeyDev/discord-status-action@0.3.2
+        uses: ./
         with:
           file: README.md
           id: "893762371770802227"
       - name: Commit and push if there are changes
         run: |-
           git diff
-          git config --global user.email "hi@devcomp.xyz"
-          git config --global user.name "StatsBot"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git diff --quiet || (git add -u && git commit -m "🚀 Update Discord Status")
           git push               
